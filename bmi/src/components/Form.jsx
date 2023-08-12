@@ -16,9 +16,10 @@ const Form = () => {
   
     const calculateBmi = () => {
         if (heightValue && weightValue) {
-            const heightInMeters = heightValue / 100;
-            const bmi = (weightValue / (heightInMeters * heightInMeters)).toFixed(2);
+            const bmi = (weightValue / (heightValue * heightValue)*703).toFixed(2);
+            console.log(bmi);
             setBmiValue(bmi);
+
   
             let message = '';
             if (bmi < 18.5) {
@@ -38,14 +39,14 @@ const Form = () => {
     };
     
   return (<>
-      <div class="Bmi-box">
+      <div className="Bmi-box">
     <h2>Bmi Calculator</h2>
     <form>
-      <div class="user-box">
+      <div className="user-box">
         <input type="text" name="" required="yes" value={heightValue} onChange={(e)=>setHeightValue(e.target.value)}/>
         <label>Height(inch)</label>
       </div>
-      <div class="user-box">
+      <div className="user-box">
         <input type="text" name="" required="yes" value={weightValue} onChange={(e)=>setWeightValue(e.target.value)}/>
         <label>Weight(lbs)</label>
       </div>
